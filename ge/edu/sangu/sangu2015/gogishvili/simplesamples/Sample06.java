@@ -1,4 +1,4 @@
-package ge.edu.sangu2015.gogishvili.simplesamples;
+package ge.edu.sangu.sangu2015.gogishvili.simplesamples;
 
 public class Sample06 {
 
