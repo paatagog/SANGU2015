@@ -9,6 +9,7 @@ public class Sample04 {
 			a = a + 2 * i + 1;
 		}
 		
+		System.out.print("a ცვლადის მნიშვნელობა არის ");		
 		System.out.print(a);		
 	}
 
