@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class Main {
 
-	
+	/**
+	 * @author MadHackers
+	 */
 
 	private static Scanner scanner;
 
@@ -32,5 +34,6 @@ public class Main {
 
 		Human User = new Human(Name,Surname,ID,date);
 		User.getYear();
+		
 	}
 }
