@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.poi.hssf.extractor.ExcelExtractor;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -97,12 +98,16 @@ public class Excel2007Editor{
 			
 			for (int i = 1; i < wr.getSheetAt(0).getLastRowNum()+1; i++) { // +1 Show Latest Record IN
 
+				// LINK: http://stackoverflow.com/questions/1072561/how-can-i-read-numeric-strings-in-excel-cells-as-string-not-numbers-with-apach
+				
 				this.st_name = wr.getSheetAt(0).getRow(i).getCell(1).getStringCellValue();
 				this.st_surname = wr.getSheetAt(0).getRow(i).getCell(2).getStringCellValue();
+				wr.getSheetAt(0).getRow(i).getCell(3).setCellType(Cell.CELL_TYPE_STRING); // Convert Numeric Cell Value To String!
 				this.id_num = wr.getSheetAt(0).getRow(i).getCell(3).toString();
 				this.day = wr.getSheetAt(0).getRow(i).getCell(4).getStringCellValue();
 				this.subject = wr.getSheetAt(0).getRow(i).getCell(5).getStringCellValue();
-				this.room = wr.getSheetAt(0).getRow(i).getCell(6).toString();
+				wr.getSheetAt(0).getRow(i).getCell(6).setCellType(Cell.CELL_TYPE_STRING); // Room Numbers Convert to String
+				this.room = wr.getSheetAt(0).getRow(i).getCell(6).getStringCellValue();
 				this.lecturer = wr.getSheetAt(0).getRow(i).getCell(7).getStringCellValue();
 				this.hour =  (int) wr.getSheetAt(0).getRow(i).getCell(8).getNumericCellValue();
 				studentList.add(new StudentsBase(getSt_name(),getSt_surname(),getId_num(),getDay(),getSubject(),getRoom(),getLecturer(),getHour()));
@@ -121,7 +126,7 @@ public class Excel2007Editor{
 	
 	public void HeaderPrint(Workbook wr){
 
-		System.out.printf("%9s%21s%20s%18s%30s%12s%17s%7s%n%n",
+		System.out.printf("%9s%21s%21s%18s%30s%12s%17s%7s%n%n",
 				wr.getSheetAt(0).getRow(0).getCell(1),
 				wr.getSheetAt(0).getRow(0).getCell(2),
 				wr.getSheetAt(0).getRow(0).getCell(3),
