@@ -1,4 +1,4 @@
-package tower.of.hanoi;
+package ge.edu.sangu.sangu2015.gabadze.hanoi;
 import java.awt.Color;
 import java.util.ArrayList;
 
